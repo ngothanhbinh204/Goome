@@ -1,0 +1,112 @@
+{
+    "key": "group_single_project",
+    "title": "Single: Project",
+    "fields": [
+        {
+            "key": "group_project_intro",
+            "name": "project_intro",
+            "label": "Project Intro (Top)",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                 {
+                    "key": "field_project_intro_subtitle",
+                    "label": "Subtitle",
+                    "name": "subtitle",
+                    "type": "text"
+                },
+                 {
+                    "key": "field_project_intro_desc",
+                    "label": "Description",
+                    "name": "description",
+                    "type": "wysiwyg"
+                },
+                 {
+                    "key": "field_project_intro_contact_text",
+                    "label": "Contact Text",
+                    "name": "contact_text",
+                    "type": "text",
+                    "default_value": "Hãy liên hệ với chúng tôi để cùng kiến tạo những công trình bền vững, chất lượng cao!"
+                },
+                {
+                    "key": "field_project_intro_image",
+                    "label": "Featured Image (Full Right)",
+                    "name": "image",
+                    "type": "image"
+                }
+            ]
+        },
+        {
+            "key": "group_project_info",
+            "name": "project_info",
+            "label": "Project Info & Solution",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                 {
+                    "key": "field_project_info_attributes",
+                    "label": "Attributes (Location, Year etc)",
+                    "name": "attributes",
+                    "type": "repeater",
+                    "sub_fields": [
+                        {
+                            "key": "field_project_info_icon",
+                            "label": "Icon Class",
+                            "name": "icon",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_project_info_label",
+                            "label": "Label",
+                            "name": "label",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_project_info_value",
+                            "label": "Value",
+                            "name": "value",
+                            "type": "text"
+                        }
+                    ]
+                },
+                 {
+                    "key": "field_project_solution_title",
+                    "label": "Solution Title",
+                    "name": "solution_title",
+                    "type": "text",
+                    "default_value": "Giải pháp của Goome"
+                },
+                 {
+                    "key": "field_project_solution_content",
+                    "label": "Solution Content",
+                    "name": "solution_content",
+                    "type": "wysiwyg"
+                }
+            ]
+        },
+        {
+            "key": "group_project_gallery",
+            "name": "project_gallery",
+            "label": "Project Gallery",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                 {
+                    "key": "field_project_gallery_images",
+                    "label": "Images",
+                    "name": "images",
+                    "type": "gallery"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "project"
+            }
+        ]
+    ]
+}

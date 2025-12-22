@@ -1,0 +1,247 @@
+{
+    "key": "group_about",
+    "title": "Page: About",
+    "fields": [
+        {
+            "key": "field_about_sections",
+            "label": "About Sections",
+            "name": "about_sections",
+            "type": "flexible_content",
+            "layouts": {
+                "layout_about_intro": {
+                    "key": "layout_about_intro",
+                    "name": "about_intro",
+                    "label": "About Intro",
+                    "sub_fields": [
+                        {
+                            "key": "field_about_intro_title",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_about_intro_desc",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "wysiwyg"
+                        },
+                        {
+                            "key": "field_about_intro_image_bg",
+                            "label": "Background Image",
+                            "name": "image_bg",
+                            "type": "image"
+                        }
+                    ]
+                },
+                "layout_about_vision_mission": {
+                    "key": "layout_about_vision_mission",
+                    "name": "about_vision_mission",
+                    "label": "Vision & Mission",
+                    "sub_fields": [
+                         {
+                            "key": "field_about_vm_vision_icon",
+                            "label": "Vision Icon",
+                            "name": "vision_icon",
+                            "type": "image"
+                        },
+                        {
+                            "key": "field_about_vm_vision_title",
+                            "label": "Vision Title",
+                            "name": "vision_title",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_about_vm_vision_desc",
+                            "label": "Vision Description",
+                            "name": "vision_description",
+                            "type": "wysiwyg"
+                        },
+                        {
+                            "key": "field_about_vm_mission_icon",
+                            "label": "Mission Icon",
+                            "name": "mission_icon",
+                            "type": "image"
+                        },
+                        {
+                            "key": "field_about_vm_mission_title",
+                            "label": "Mission Title",
+                            "name": "mission_title",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_about_vm_mission_desc",
+                            "label": "Mission Description",
+                            "name": "mission_description",
+                            "type": "wysiwyg"
+                        },
+                        {
+                            "key": "field_about_vm_image",
+                            "label": "Right Image",
+                            "name": "image",
+                            "type": "image"
+                        }
+                    ]
+                },
+                "layout_about_core_values": {
+                    "key": "layout_about_core_values",
+                    "name": "about_core_values",
+                    "label": "Core Values",
+                    "sub_fields": [
+                        {
+                            "key": "field_about_cv_title",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_about_cv_list",
+                            "label": "Values List",
+                            "name": "values",
+                            "type": "repeater",
+                            "sub_fields": [
+                                {
+                                    "key": "field_about_cv_icon",
+                                    "label": "Icon",
+                                    "name": "icon",
+                                    "type": "image"
+                                },
+                                {
+                                    "key": "field_about_cv_name",
+                                    "label": "Name",
+                                    "name": "name",
+                                    "type": "text"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_about_org_chart": {
+                    "key": "layout_about_org_chart",
+                    "name": "about_org_chart",
+                    "label": "Organization Chart",
+                    "sub_fields": [
+                         {
+                            "key": "field_about_oc_title",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_about_oc_image",
+                            "label": "Chart Image",
+                            "name": "image",
+                            "type": "image"
+                        }
+                    ]
+                },
+                "layout_about_people": {
+                    "key": "layout_about_people",
+                    "name": "about_people",
+                    "label": "People",
+                    "sub_fields": [
+                        {
+                            "key": "field_about_people_title",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_about_people_desc",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "wysiwyg"
+                        },
+                         {
+                            "key": "field_about_people_list",
+                            "label": "People List",
+                            "name": "people",
+                            "type": "repeater",
+                            "sub_fields": [
+                                {
+                                    "key": "field_about_people_group",
+                                    "label": "Group Name",
+                                    "name": "group_name",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "field_about_people_items",
+                                    "label": "Members",
+                                    "name": "members",
+                                    "type": "repeater",
+                                    "sub_fields": [
+                                         {
+                                            "key": "field_about_people_img",
+                                            "label": "Image",
+                                            "name": "image",
+                                            "type": "image"
+                                        },
+                                        {
+                                            "key": "field_about_people_name",
+                                            "label": "Name",
+                                            "name": "name",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "field_about_people_role",
+                                            "label": "Role",
+                                            "name": "role",
+                                            "type": "text"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "layout_about_awards": {
+                    "key": "layout_about_awards",
+                    "name": "about_awards",
+                    "label": "Awards",
+                    "sub_fields": [
+                         {
+                            "key": "field_about_awards_title",
+                            "label": "Title",
+                            "name": "title",
+                            "type": "text"
+                        },
+                         {
+                            "key": "field_about_awards_subtitle",
+                            "label": "Subtitle",
+                            "name": "subtitle",
+                            "type": "text"
+                        },
+                         {
+                            "key": "field_about_awards_desc",
+                            "label": "Description",
+                            "name": "description",
+                            "type": "wysiwyg"
+                        },
+                        {
+                            "key": "field_about_awards_list",
+                            "label": "Awards List",
+                            "name": "awards",
+                            "type": "repeater",
+                            "sub_fields": [
+                                {
+                                    "key": "field_about_awards_img",
+                                    "label": "Image",
+                                    "name": "image",
+                                    "type": "image"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "templates/page-about.php"
+            }
+        ]
+    ]
+}

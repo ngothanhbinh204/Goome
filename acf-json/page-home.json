@@ -1,0 +1,155 @@
+[
+    {
+        "key": "group_home",
+        "title": "Page: Home",
+        "fields": [
+            {
+                "key": "field_home_content",
+                "label": "Home Page Content",
+                "name": "home_content",
+                "type": "flexible_content",
+                "layouts": [
+                    {
+                        "key": "layout_home_about",
+                        "name": "layout_home_about",
+                        "label": "Home About Section",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_home_about_desc",
+                                "label": "Description",
+                                "name": "description",
+                                "type": "textarea",
+                                "rows": 4
+                            },
+                             {
+                                "key": "field_home_about_link",
+                                "label": "Link",
+                                "name": "link",
+                                "type": "link"
+                            },
+                            {
+                                "key": "field_home_about_main_image",
+                                "label": "Main Image (Left)",
+                                "name": "main_image",
+                                "type": "image",
+                                "return_format": "array"
+                            },
+                            {
+                                "key": "field_home_about_gallery",
+                                "label": "Gallery Images (Right Swiper)",
+                                "name": "gallery",
+                                "type": "gallery",
+                                "return_format": "array"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "layout_home_projects",
+                        "name": "layout_home_projects",
+                        "label": "Home Projects Section",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_home_projects_title",
+                                "label": "Title",
+                                "name": "title",
+                                "type": "text",
+                                "default_value": "Dự án"
+                            },
+                             {
+                                "key": "field_home_projects_limit",
+                                "label": "Number of Projects per Category",
+                                "name": "limit",
+                                "type": "number",
+                                "default_value": 6
+                            }
+                        ]
+                    },
+                    {
+                        "key": "layout_home_news",
+                        "name": "layout_home_news",
+                        "label": "Home News Section",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_home_news_title",
+                                "label": "Title",
+                                "name": "title",
+                                "type": "text",
+                                "default_value": "Tin tức & Kiến thức"
+                            },
+                             {
+                                "key": "field_home_news_limit",
+                                "label": "Number of News",
+                                "name": "limit",
+                                "type": "number",
+                                "default_value": 6
+                            },
+                            {
+                                "key": "field_home_news_btn_label",
+                                "label": "Button Label",
+                                "name": "button_label",
+                                "type": "text",
+                                "default_value": "Xem tất cả"
+                            },
+                             {
+                                "key": "field_home_news_btn_link",
+                                "label": "Button Link",
+                                "name": "button_link",
+                                "type": "link"
+                            }
+                        ]
+                    },
+                     {
+                        "key": "layout_home_partners",
+                        "name": "layout_home_partners",
+                        "label": "Home Partners Section",
+                        "display": "block",
+                        "sub_fields": [
+                            {
+                                "key": "field_home_partners_title",
+                                "label": "Title",
+                                "name": "title",
+                                "type": "text",
+                                "default_value": "Đối tác của chúng tôi"
+                            },
+                             {
+                                "key": "field_home_partners_logos",
+                                "label": "Partners Logos",
+                                "name": "partners_logos",
+                                "type": "repeater",
+                                "layout": "table",
+                                "sub_fields": [
+                                    {
+                                        "key": "field_home_partner_logo",
+                                        "label": "Logo",
+                                        "name": "logo",
+                                        "type": "image",
+                                        "return_format": "array"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "page_template",
+                    "operator": "==",
+                    "value": "templates/page-home.php"
+                }
+            ],
+            [
+                {
+                    "param": "page_type",
+                    "operator": "==",
+                    "value": "front_page"
+                }
+            ]
+        ]
+    }
+]

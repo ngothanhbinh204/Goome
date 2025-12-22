@@ -1,0 +1,56 @@
+{
+    "key": "group_single_career",
+    "title": "Single: Career",
+    "fields": [
+        {
+            "key": "group_career_detail",
+            "name": "career_detail",
+            "label": "Job Details",
+            "type": "group",
+            "layout": "block",
+            "sub_fields": [
+                 {
+                    "key": "field_career_detail_content",
+                    "label": "Main Content (Roles, Requirements)",
+                    "name": "content",
+                    "type": "wysiwyg"
+                },
+                 {
+                    "key": "field_career_info_attributes",
+                    "label": "Sidebar Info (Expiration, Salary...)",
+                    "name": "info_attributes",
+                    "type": "repeater",
+                    "sub_fields": [
+                        {
+                            "key": "field_career_info_icon",
+                            "label": "Icon SVG",
+                            "name": "icon",
+                            "type": "textarea"
+                        },
+                        {
+                            "key": "field_career_info_label",
+                            "label": "Label",
+                            "name": "label",
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_career_info_value",
+                            "label": "Value",
+                            "name": "value",
+                            "type": "text"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "career"
+            }
+        ]
+    ]
+}

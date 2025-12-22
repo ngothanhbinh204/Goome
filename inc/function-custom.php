@@ -31,4 +31,24 @@ function empty_content($str)
 	return trim(str_replace('&nbsp;', '', strip_tags($str, '<img>'))) == '';
 }
 
+
+function goome_get_archive_page_id($post_type) {
+    $templates = [
+        'project' => 'templates/page-projects.php',
+        'career'  => 'templates/page-career.php',
+        'post'    => 'templates/page-news.php',
+    ];
+
+    if (isset($templates[$post_type])) {
+        $pages = get_pages([
+            'meta_key'   => '_wp_page_template',
+            'meta_value' => $templates[$post_type],
+            'number'     => 1
+        ]);
+        if (!empty($pages)) {
+            return $pages[0]->ID;
+        }
+    }
+    return 0;
+}
 ?>

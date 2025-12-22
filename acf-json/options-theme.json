@@ -1,0 +1,125 @@
+[
+    {
+        "key": "group_theme_options_footer",
+        "title": "Footer Settings",
+        "fields": [
+            {
+                "key": "field_footer_tab",
+                "label": "Footer",
+                "type": "tab",
+                "placement": "top"
+            },
+            {
+                "key": "group_footer_settings",
+                "label": "Footer Content",
+                "name": "footer_settings",
+                "type": "group",
+                "sub_fields": [
+                    {
+                        "key": "field_footer_logo",
+                        "label": "Footer Logo",
+                        "name": "footer_logo",
+                        "type": "image",
+                        "return_format": "array"
+                    },
+                     {
+                        "key": "field_footer_intro_title",
+                        "label": "Intro Title (Contact Block)",
+                        "name": "footer_intro_title",
+                        "type": "text",
+                        "default_value": "Liên hệ với chúng tôi"
+                    },
+                    {
+                        "key": "field_footer_intro_desc",
+                        "label": "Intro Description",
+                        "name": "footer_intro_desc",
+                        "type": "textarea",
+                        "rows": 3
+                    },
+                    {
+                        "key": "field_footer_form_shortcode",
+                        "label": "Form Shortcode",
+                        "name": "footer_form_shortcode",
+                        "type": "text"
+                    },
+                    {
+                        "key": "field_footer_quick_links_title",
+                        "label": "Quick Links Title",
+                        "name": "footer_quick_links_title",
+                        "type": "text",
+                        "default_value": "Liên kết nhanh"
+                    },
+                    {
+                        "key": "field_footer_contact_title",
+                        "label": "Contact Info Title",
+                        "name": "footer_contact_title",
+                        "type": "text",
+                        "default_value": "Thông tin liên hệ"
+                    },
+                    {
+                        "key": "field_footer_contact_list",
+                        "label": "Contact Info List",
+                        "name": "footer_contact_list",
+                        "type": "repeater",
+                        "layout": "row",
+                        "sub_fields": [
+                            {
+                                "key": "field_footer_contact_icon",
+                                "label": "Icon Class",
+                                "name": "icon_class",
+                                "type": "text",
+                                "default_value": "fa-solid fa-location-dot"
+                            },
+                            {
+                                "key": "field_footer_contact_content",
+                                "label": "Content",
+                                "name": "content",
+                                "type": "wysiwyg",
+                                "tabs": "visual",
+                                "media_upload": 0,
+                                "toolbar": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "key": "field_footer_copyright",
+                        "label": "Copyright Text",
+                        "name": "footer_copyright",
+                        "type": "text",
+                        "default_value": "© 2025 GOOME. All Rights Reserved. Website designed by Cánh Cam."
+                    },
+                    {
+                        "key": "field_footer_socials",
+                        "label": "Social Media",
+                        "name": "footer_socials",
+                        "type": "repeater",
+                        "layout": "table",
+                        "sub_fields": [
+                            {
+                                "key": "field_footer_social_icon",
+                                "label": "Icon Class",
+                                "name": "icon_class",
+                                "type": "text"
+                            },
+                             {
+                                "key": "field_footer_social_link",
+                                "label": "Link",
+                                "name": "link",
+                                "type": "url"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "options_page",
+                    "operator": "==",
+                    "value": "theme-settings"
+                }
+            ]
+        ]
+    }
+]
