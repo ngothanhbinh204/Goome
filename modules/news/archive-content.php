@@ -84,9 +84,8 @@ $all_link = get_permalink(goome_get_archive_page_id('post'));
                 <div class="block-new-banner">
                     <div class="grid grid-cols-2 -md:grid-cols-1 -md:gap-base">
                         <div class="img img-ratio ratio:pt-[69%] zoom-img rounded-4 md:rounded-r-none">
-                            <?php if($feat_img_url): ?>
-                            <img class="lozad" data-src="<?php echo esc_url($feat_img_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"/>
-                            <?php endif; ?>
+                           <?php 
+                           echo get_image_post($feat_post_id, 'image') ?>
                         </div>
                         <div class="bg-new bg-utility-gray-50 w-full h-full flex items-center pr-base pl-base  md:rounded-r-4">
                             <div class="block-content">
@@ -120,7 +119,7 @@ $all_link = get_permalink(goome_get_archive_page_id('post'));
                         <div class="card-new card-new flex flex-col gap-6 group"> 
                             <a class="img img-ratio ratio:pt-[340_440] group rounded-4 zoom-img" href="<?php the_permalink(); ?>">
                                 <?php if($thumb_url): ?>
-                                <img class="lozad" data-src="<?php echo esc_url($thumb_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"/>
+                                     <?php echo get_image_post(get_the_ID(), 'image') ?>
                                 <?php endif; ?>
                             </a>
                             <div class="new-content">

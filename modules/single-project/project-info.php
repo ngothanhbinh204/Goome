@@ -26,7 +26,7 @@ if ($info_group):
                             <p><?php echo esc_html($attr['label']); ?></p>
                         </div>
                         <div class="body-1 font-bold">
-                            <p><?php echo esc_html($attr['value']); ?></p>
+                            <p><?php echo wp_kses_post($attr['value']); ?></p>
                         </div>
                     </div>
                 </div>

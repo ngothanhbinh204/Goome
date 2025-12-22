@@ -14,7 +14,8 @@ $the_query       = isset($args['query']) ? $args['query'] : null;
 $intro_group = get_field('career_page_intro', $archive_page_id);
 $title       = isset($intro_group['title']) ? $intro_group['title'] : '';
 $desc        = isset($intro_group['description']) ? $intro_group['description'] : '';
-
+$decoration_image = isset($intro_group['decoration_image']) ? $intro_group['decoration_image'] : '';
+$journey_image = isset($intro_group['journey_image']) ? $intro_group['journey_image'] : '';
 // Fallbacks
 if (!$title && $archive_page_id) {
     $title = get_the_title($archive_page_id);
@@ -36,24 +37,14 @@ if (!$title && $archive_page_id) {
             </div>
         </div>
     </div>
-    <!-- Decorative Image - Hardcoded or ACF? Kept hardcoded as per UI for now, or could be ACF -->
-    <img class="absolute right-[8%] bottom-0 w-[120px] md:w-[180px] lg:rem:w-[361px] lg:rem:h-[274px]" src="<?php echo get_template_directory_uri(); ?>/dist/img/logo-footer.svg" alt="decoration">
+    
+    <img class="absolute right-[8%] bottom-0 w-[120px] md:w-[180px] lg:rem:w-[361px] lg:rem:h-[274px]" src="<?php echo $decoration_image['url']; ?>" alt="decoration">
 </section>
 
-<!-- Journey Section (Static or ACF?) - UI/tuyen-dungList.html has this. 
-     If it's content manageable, it should need ACF. But for now, sticking to Provided Rules:
-     "Tabs and Group fields for Contact, Project Archive Entry..." 
-     Assuming 'career_page_intro' covers the top text. The image below might be static or part of intro.
-     Let's keep it static/placeholder if no specific ACF group. -->
 <section class="section-journey">
     <div class="journey relative">
         <div class="hero-img img-ratio ratio:pt-[760_1920]">
-             <?php 
-             // Ideally this image should be in ACF. For now using a placeholder logic or strictly following rules.
-             // If field exists in intro group?
-             // $intro_image = isset($intro_group['image']) ...
-             ?>
-            <img class="lozad" data-src="<?php echo get_template_directory_uri(); ?>/dist/img/journey-img-1.svg" alt=""/>
+            <?php echo get_image_attrachment($journey_image, 'image'); ?>
         </div>
     </div>
 </section>

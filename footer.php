@@ -1,12 +1,13 @@
 		<footer>
 			<?php
-			$footer_bg_url = get_template_directory_uri() . '/dist/img/footer.svg';
+			// $footer_bg_url = get_template_directory_uri() . '/dist/img/footer.svg';
 			
 			// ACF Options
 			$footer_settings = get_field('footer_settings', 'option');
 			
 			// Default values to prevent errors
 			$f_logo = isset($footer_settings['footer_logo']) ? $footer_settings['footer_logo'] : '';
+			$footer_bg_url = isset($footer_settings['footer_bg_url']) ? $footer_settings['footer_bg_url'] : '';
 			$f_intro_title = isset($footer_settings['footer_intro_title']) ? $footer_settings['footer_intro_title'] : '';
 			$f_intro_desc = isset($footer_settings['footer_intro_desc']) ? $footer_settings['footer_intro_desc'] : '';
 			$f_form_shortcode = isset($footer_settings['footer_form_shortcode']) ? $footer_settings['footer_form_shortcode'] : '';
@@ -19,7 +20,7 @@
 			$f_copyright = isset($footer_settings['footer_copyright']) ? $footer_settings['footer_copyright'] : '';
 			$f_socials = isset($footer_settings['footer_socials']) ? $footer_settings['footer_socials'] : [];
 			?>
-			<div class="bg-img-footer w-full rem:min-h-[654px] -md:min-h-auto relative flex-center " setBackground="<?php echo esc_url($footer_bg_url); ?>">
+			<div class="bg-img-footer w-full rem:min-h-[654px] -md:min-h-auto relative flex-center " setBackground="<?php echo esc_url($footer_bg_url['url']); ?>">
 				<div class="main-content">
 					<div class="container">
 						<div class="block-footer">
