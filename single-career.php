@@ -5,9 +5,10 @@ get_header();
 // include get_template_directory() . '/modules/common/banner.php';
 
 ?>
-<main>
+
     <?php
+    include get_template_directory() . '/modules/common/breadcrumd.php';
     get_template_part('modules/single-career/career-detail');
     ?>
-</main>
+
 <?php get_footer(); ?>

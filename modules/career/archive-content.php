@@ -71,36 +71,38 @@ if (!$title && $archive_page_id) {
                         $i = 0;
                         while($the_query->have_posts()): $the_query->the_post(); 
                         $i++;
-                        // ACF fields for Single Career usually have these details?
-                        // 'career_detail' group -> 'info_attributes' repeater in single-career.json
-                        // We need to fetch that here.
+   
                         $detail_group = get_field('career_detail', get_the_ID());
                         $attributes = isset($detail_group['info_attributes']) ? $detail_group['info_attributes'] : [];
-                        
-                        // Extract specific attributes by label/key if possible, or just standard fields?
-                        // UI shows: Expiration Date, Location.
-                        // Assuming the repeater has these. We need to find them.
                         $exp_date = '';
                         $location = '';
                         
                         if ($attributes) {
                             foreach ($attributes as $attr) {
-                                // Simple string matching or keys? 
-                                // JSON check: keys are icon, label, value.
                                 if (stripos($attr['label'], 'Hạn nộp') !== false || stripos($attr['label'], 'Expiration') !== false) {
                                     $exp_date = $attr['value'];
                                 }
-                                if (stripos($attr['label'], 'Địa điểm') !== false || stripos($attr['label'], 'Location') !== false) {
-                                    $location = $attr['value'];
-                                }
                             }
+                        }
+                        // lấy địa điểm từ taxonomy
+                        $terms = get_the_terms(get_the_ID(), 'career_cat');
+                        if ($terms && !is_wp_error($terms)) {
+                            $location = implode(', ', wp_list_pluck($terms, 'name'));
                         }
                         ?>
                         <tr class="row-job -md:grid -md:grid-cols-1 -md:p-2 text-body-1 -md:rounded-1 border border-utility-gray-10 bg-secondary-1 bg-opacity-[0.05]">
                             <td class="text-center -md:hidden"><?php echo sprintf('%02d', $i); ?></td>
                             <td class="p-2 px-4 py-2 md:py-3 -md:font-semibold"><?php the_title(); ?></td>
                             <td class="p-2 px-4 py-2 md:py-3 -md:order-3"><?php echo esc_html($exp_date); ?></td>
-                            <td class="p-2 px-4 py-2 md:py-3"><?php echo esc_html($location); ?></td>
+                            <td class="p-2 px-4 py-2 md:py-3">
+                                <?php
+                                    if ($location) {
+                                        echo $location;
+                                    } else {
+                                        echo esc_html__('Chưa có địa điểm', 'canhcamtheme');
+                                    }
+                                ?>
+                            </td>
                             <td class="p-2 px-4 py-2 md:py-3 -md:order-4"> 
                                 <div class="flex-center h-full -md:justify-start">
                                     <a class="flex items-center gap-x-2.5 text-utility-gray-500" href="<?php the_permalink(); ?>">   
@@ -115,18 +117,7 @@ if (!$title && $archive_page_id) {
                 </table>
             </div>
             <div class="flex justify-center">
-                 <?php 
-                    /* Custom pagination or standard? UI shows "Tìm hiểu thêm" button? 
-                       Actually UI shows a button "Tìm hiểu thêm" at bottom of table? 
-                       Or is it pagination? "list-new" had pagination 1,2,3.
-                       "career-opportunities" in html shows a button.
-                       If 'Load More', we need ajax. If standard pagination, use numbers.
-                       Let's stick to standard pagination if list is long.
-                    */
-                    if (function_exists('canhcam_pagination')) {
-                        canhcam_pagination($the_query);
-                    }
-                 ?>
+               <?php echo wp_bootstrap_pagination(array('custom_query' => $the_query)) ?>
             </div>
             <?php else: ?>
                 <p class="text-center"><?php esc_html_e('Hiện chưa có vị trí tuyển dụng nào.', 'canhcamtheme'); ?></p>

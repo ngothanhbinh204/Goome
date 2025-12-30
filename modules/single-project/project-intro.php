@@ -6,7 +6,6 @@
 $intro_group = get_field('project_intro');
 if ($intro_group):
     $title     = get_the_title();
-    // Subtitle could be a custom field or Category
     $subtitle  = isset($intro_group['subtitle']) ? $intro_group['subtitle'] : ''; 
     $desc      = isset($intro_group['description']) ? $intro_group['description'] : '';
     $contact   = isset($intro_group['contact_text']) ? $intro_group['contact_text'] : '';
@@ -26,6 +25,7 @@ if ($intro_group):
                             <div class="heading-1"> 
                                 <h1><?php echo esc_html($title); ?></h1>
                             </div>
+                            <span></span>
                             <?php if($subtitle): ?>
                             <div class="heading-6"> 
                                 <h2><?php echo esc_html($subtitle); ?></h2>
@@ -44,10 +44,10 @@ if ($intro_group):
                     </div>
                 </div>
             </div>
-            <?php if($image_url): ?>
+            <?php if($image): ?>
             <div class="blcok-rigth w-[calc(1060/1920*100rem)]  -md:w-full">
                 <div class="img img-ratio ratio:pt-[596_1060] ">
-                    <img class="lozad" data-src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($title); ?>"/>
+                    <img class="lozad" data-src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"/>
                 </div>
             </div>
             <?php endif; ?>

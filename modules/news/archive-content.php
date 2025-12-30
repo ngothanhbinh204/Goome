@@ -142,11 +142,7 @@ $all_link = get_permalink(goome_get_archive_page_id('post'));
                 </div>
                 
                 <div class="flex justify-center">
-                    <?php 
-                        if (function_exists('canhcam_pagination')) {
-                            canhcam_pagination($the_query);
-                        }
-                    ?>
+                 <?php echo wp_bootstrap_pagination(array('custom_query' => $the_query)) ?>
                 </div>
 
                 <?php else: ?>

@@ -92,12 +92,7 @@ $all_link = get_permalink(goome_get_archive_page_id('project'));
                             </div>
                         <?php endwhile; wp_reset_postdata(); ?>
                     </div>
-                    <?php 
-                        // Pagination
-                        if (function_exists('canhcam_pagination')) {
-                            canhcam_pagination($the_query);
-                        }
-                    ?>
+                  <?php echo wp_bootstrap_pagination(array('custom_query' => $the_query)) ?>
                     <?php else: ?>
                         <p><?php esc_html_e('Không có dự án nào.', 'canhcamtheme'); ?></p>
                     <?php endif; ?>

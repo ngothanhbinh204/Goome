@@ -54,14 +54,22 @@ $main_img_url = isset($main_image_arr['url']) ? $main_image_arr['url'] : '';
                             <div class="swiper-slide">
                                 <div class="grid grid-cols-2 gap-base -md:grid-cols-1">
                                     <?php foreach($chunk as $g_item): 
-                                        $g_url = $g_item['url'];
-                                        $g_alt = $g_item['alt'];
+                                        $g_image = isset($g_item['image']) ? $g_item['image'] : null;
+                                        $g_name = isset($g_item['name']) ? $g_item['name'] : '';
+                                        
+                                        if($g_image):
+                                            $g_url = isset($g_image['url']) ? $g_image['url'] : '';
+                                            $g_alt = isset($g_image['alt']) ? $g_image['alt'] : $g_name;
+                                        else:
+                                            $g_url = '';
+                                            $g_alt = $g_name;
+                                        endif;
                                     ?>
                                     <div class="relative" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="300">
-                                        <?php if($link_url): ?>
+                                        <?php if($g_name): ?>
                                         <div class="content-img-botom">
                                             <div class="heading-2 text-center">
-                                                <a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>"><?php echo esc_html($link_title); ?></a>
+                                                <a href="javascript:void(0)" class="pointer-events-none"><?php echo esc_html($g_name); ?></a>
                                             </div>
                                         </div>
                                         <?php endif; ?>

@@ -84,12 +84,12 @@
                             "max_size": 0,
                             "mime_types": ""
                         },
-                        {
+{
                             "key": "field_home_about_gallery",
-                            "label": "Gallery Images (Right Swiper)",
+                            "label": "Gallery List",
                             "name": "gallery",
                             "aria-label": "",
-                            "type": "gallery",
+                            "type": "repeater",
                             "instructions": "",
                             "required": false,
                             "conditional_logic": false,
@@ -98,19 +98,58 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array",
-                            "preview_size": "medium",
-                            "insert": "append",
-                            "library": "all",
+                            "collapsed": "",
                             "min": 0,
                             "max": 0,
-                            "min_width": 0,
-                            "min_height": 0,
-                            "min_size": 0,
-                            "max_width": 0,
-                            "max_height": 0,
-                            "max_size": 0,
-                            "mime_types": ""
+                            "layout": "block",
+                            "button_label": "Thêm ảnh",
+                            "sub_fields": [
+                                {
+                                    "key": "field_home_about_gallery_image",
+                                    "label": "Hình ảnh",
+                                    "name": "image",
+                                    "aria-label": "",
+                                    "type": "image",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "preview_size": "medium",
+                                    "library": "all",
+                                    "min_width": "",
+                                    "min_height": "",
+                                    "min_size": "",
+                                    "max_width": "",
+                                    "max_height": "",
+                                    "max_size": "",
+                                    "mime_types": ""
+                                },
+                                {
+                                    "key": "field_home_about_gallery_name",
+                                    "label": "Tên",
+                                    "name": "name",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": false,
+                                    "conditional_logic": false,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": ""
+                                }
+                            ]
                         }
                     ],
                     "min": "",

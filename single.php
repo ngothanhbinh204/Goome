@@ -10,9 +10,10 @@ get_header();
 // NO BANNER INCLUDED HERE per instructions
 
 ?>
-<main>
+
     <?php
+    include get_template_directory() . '/modules/common/breadcrumd.php';
     get_template_part('modules/news/single-content');
     ?>
-</main>
+
 <?php get_footer(); ?>

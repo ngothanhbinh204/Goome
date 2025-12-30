@@ -17,12 +17,12 @@ $args = [
 $news_query = new WP_Query($args);
 
 ?>
-<main>
+
     <?php 
     get_template_part('modules/news/archive-content', null, [
         'archive_page_id' => $archive_page_id,
         'query'           => $news_query
     ]); 
     ?>
-</main>
+
 <?php get_footer(); ?>

@@ -50,13 +50,13 @@ function add_field_select_banner()
 				),
 			),
 			// Thêm taxonomy ở dưới
-			// array(
-			// 	array(
-			// 		'param' => 'taxonomy',
-			// 		'operator' => '==',
-			// 		'value' => 'danh-muc-san-pham'
-			// 	)
-			// )
+			array(
+				array(
+					'param' => 'taxonomy',
+					'operator' => '==',
+					'value' => 'category'
+				)
+			)
 		),
 	));
 	acf_add_local_field(array(

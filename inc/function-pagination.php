@@ -9,70 +9,66 @@
  * $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
  * 'paged' => $paged
  */
+/**
+ * WordPress Bootstrap Pagination (Chỉ hiển thị số trang, không có số 0 ở đầu)
+ */
 function wp_bootstrap_pagination($args = array())
 {
+    $defaults = array(
+        'range'         => 4,
+        'custom_query'  => FALSE,
+        'before_output' => '<div class="navigation flex gap-2 body-2">',
+        'after_output'  => '</div>'
+    );
 
-	$defaults = array(
-		'range' => 4,
-		'custom_query' => FALSE,
-		'previous_string' => __('Trước', 'text-domain'),
-		'next_string' => __('Sau', 'text-domain'),
-		'before_output' => '<div class="post-nav">
-	<ul class="pager">',
-		'after_output' => '</ul>
-</div>'
-	);
+    $args = wp_parse_args(
+        $args,
+        apply_filters('wp_bootstrap_pagination_defaults', $defaults)
+    );
 
-	$args = wp_parse_args(
-		$args,
-		apply_filters('wp_bootstrap_pagination_defaults', $defaults)
-	);
+    if (!$args['custom_query']) {
+        $args['custom_query'] = $GLOBALS['wp_query'];
+    }
 
-	$args['range'] = (int) $args['range'] - 1;
-	if (!$args['custom_query'])
-		$args['custom_query'] = @$GLOBALS['wp_query'];
-	$count = (int) $args['custom_query']->max_num_pages;
-	$page = intval(get_query_var('paged'));
-	$ceil = ceil($args['range'] / 2);
+    $count = (int) $args['custom_query']->max_num_pages;
+    $page  = intval(get_query_var('paged'));
+    if (!$page) $page = 1;
 
-	if ($count <= 1) return FALSE;
-	if (!$page) $page = 1;
-	if ($count > $args['range']) {
-		if ($page <= $args['range']) {
-			$min = 1;
-			$max = $args['range'] + 1;
-		} elseif ($page >= ($count - $ceil)) {
-			$min = $count - $args['range'];
-			$max = $count;
-		} elseif ($page >= $args['range'] && $page < ($count - $ceil)) {
-			$min = $page - $ceil;
-			$max = $page + $ceil;
-		}
-	} else {
-		$min = 1;
-		$max = $count;
-	}
-	$echo = '';
-	$previous = intval($page) - 1;
-	$previous = esc_attr(get_pagenum_link($previous));
-	$firstpage = esc_attr(get_pagenum_link(1));
-	if ($firstpage && (1 != $page)) $echo .= '<li class="previous hidden"><a href="' . $firstpage . '">' . __('Đầu tiên', 'text-domain') . '</a></li>';
-	if ($previous && (1 != $page)) $echo .= '<li class="hidden"><a href="' . $previous . '" title="' . __('Trước', 'text-domain') . '">' . $args['previous_string'] . '</a></li>';
-	if (!empty($min) && !empty($max)) {
-		for ($i = $min; $i <= $max; $i++) {
-			if ($page == $i) {
-				$echo .= '<li class="active"><span class="active">' . str_pad((int)$i, 2, '0', STR_PAD_LEFT) . '</span></li>';
-			} else {
-				$echo .= sprintf('<li><a href="%s">%002d</a></li>', esc_attr(get_pagenum_link($i)), $i);
-			}
-		}
-	}
-	$next = intval($page) + 1;
-	$next = esc_attr(get_pagenum_link($next));
-	if ($next && ($count != $page)) $echo .= '<li class="hidden"><a href="' . $next . '" title="' . __('Kế tiếp', 'text-domain') . '">' . $args['next_string'] . '</a></li>';
-	$lastpage = esc_attr(get_pagenum_link($count));
-	if ($lastpage) {
-		$echo .= '<li class="next hidden"><a href="' . $lastpage . '">' . __('Cuối cùng', 'text-domain') . '</a></li>';
-	}
-	if (isset($echo)) echo $args['before_output'] . $echo . $args['after_output'];
+    if ($count <= 1) return FALSE;
+
+    $range = (int) $args['range'] - 1;
+    $ceil  = ceil($range / 2);
+
+    if ($count > $range) {
+        if ($page <= $range) {
+            $min = 1;
+            $max = $range + 1;
+        } elseif ($page >= ($count - $ceil)) {
+            $min = $count - $range;
+            $max = $count;
+        } else {
+            $min = $page - $ceil;
+            $max = $page + $ceil;
+        }
+    } else {
+        $min = 1;
+        $max = $count;
+    }
+
+    $echo = '';
+
+    if (!empty($min) && !empty($max)) {
+        for ($i = $min; $i <= $max; $i++) {
+            // Đã loại bỏ str_pad để hiển thị số tự nhiên (1, 2, 3...)
+            if ($page == $i) {
+                $echo .= '<a class="btn-primary btn active rounded-2" href="javascript:void(0)"><span>' . (int)$i . '</span></a>';
+            } else {
+                $echo .= '<a class="btn-primary btn bg-utility-gray-100 rounded-2 border-utility-gray-100" href="' . esc_attr(get_pagenum_link($i)) . '"><span>' . (int)$i . '</span></a>';
+            }
+        }
+    }
+
+    if (!empty($echo)) {
+        echo $args['before_output'] . $echo . $args['after_output'];
+    }
 }

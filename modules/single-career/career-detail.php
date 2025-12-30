@@ -43,9 +43,46 @@ $attributes   = isset($group_detail['info_attributes']) ? $group_detail['info_at
                             <?php foreach($attributes as $attr): ?>
                             <li class="apply-item flex items-center gap-x-6 py-3 border-b border-white border-opacity-30"> 
                                 <?php if (!empty($attr['icon'])): ?>
-                                <span class="icon w-10 h-auto">
-                                    <?php echo $attr['icon']; // Assuming SVG string from textarea ?>
+                               <span class="icon w-10 h-auto">
+                                    <?php
+                                    $icon_svg   = $attr['icon'] ?? '';
+                                    $icon_image = $attr['icon_image'] ?? null;
+
+                                    if (!empty($icon_svg)) {
+                                        echo wp_kses(
+                                            $icon_svg,
+                                            [
+                                                'svg'   => [
+                                                    'xmlns'       => true,
+                                                    'viewBox'     => true,
+                                                    'width'       => true,
+                                                    'height'      => true,
+                                                    'fill'        => true,
+                                                    'class'       => true,
+                                                    'aria-hidden' => true,
+                                                    'role'        => true,
+                                                ],
+                                                'path'  => [
+                                                    'd'     => true,
+                                                    'fill'  => true,
+                                                    'class' => true,
+                                                ],
+                                                'g'     => ['fill' => true, 'class' => true],
+                                                'title' => [],
+                                            ]
+                                        );
+                                    } elseif (!empty($icon_image) && !empty($icon_image['url'])) {
+                                        ?>
+                                        <img
+                                            src="<?php echo esc_url($icon_image['url']); ?>"
+                                            alt="<?php echo esc_attr($icon_image['alt'] ?? ''); ?>"
+                                            loading="lazy"
+                                        >
+                                        <?php
+                                    }
+                                    ?>
                                 </span>
+
                                 <?php endif; ?>
                                 <div class="block-content flex flex-col gap-y-1">
                                     <span class="top-content text-body-3"><?php echo esc_html($attr['label']); ?></span>

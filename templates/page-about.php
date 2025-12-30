@@ -3,10 +3,10 @@
 get_header();
 
 // Include Banner Module
-include get_template_directory() . '/modules/common/banner.php';
+include get_template_directory() . '/modules/common/banner-basic.php';
+include get_template_directory() . '/modules/common/breadcrumd.php';
 
 ?>
-<main>
     <?php if(have_rows('about_sections')): ?>
         <?php while(have_rows('about_sections')): the_row(); ?>
             <?php
@@ -17,5 +17,4 @@ include get_template_directory() . '/modules/common/banner.php';
             ?>
         <?php endwhile; ?>
     <?php endif; ?>
-</main>
 <?php get_footer(); ?>

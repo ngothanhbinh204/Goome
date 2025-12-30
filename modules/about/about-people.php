@@ -57,7 +57,7 @@ $desc = get_sub_field('description');
                                         <?php endif; ?>
                                         <?php if($m_role): ?>
                                         <div class="body-1 text-utility-gray-800">
-                                            <p><?php echo esc_html($m_role); ?></p>
+                                            <?php echo wp_kses_post($m_role); ?>
                                         </div>
                                         <?php endif; ?>
                                     </div>

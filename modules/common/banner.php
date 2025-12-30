@@ -45,21 +45,39 @@ $selected_banners = get_field('banner_select_page', $banner_source_id);
 // 3. Render
 ?>
 
-<?php if ($selected_banners && is_array($selected_banners)): ?>
+<?php if ($selected_banners && is_array($selected_banners)): 
+    // Filter valid posts first to get accurate count
+    $valid_banners = [];
+    foreach ($selected_banners as $p) {
+        if ($p instanceof WP_Post) {
+            $valid_banners[] = $p;
+        }
+    }
+    $banner_count = count($valid_banners);
+
+    if ($banner_count > 0):
+?>
 <section class="page-banner-main section-home-banner">
+    <?php if ($banner_count > 1): ?>
     <div class="swiper">
         <div class="swiper-wrapper">
-            <?php foreach ($selected_banners as $banner_post): 
-                // Ensure valid Post Object
-                if (!($banner_post instanceof WP_Post)) continue;
+    <?php else: ?>
+    <div class="banner-static relative w-full h-full">
+    <?php endif; ?>
 
+            <?php foreach ($valid_banners as $banner_post): 
                 $b_id = $banner_post->ID;
                 $title = get_the_title($b_id); // Default Title from Post Title
                 
                 // Get Fields from Banner CPT
                 $subtitle = get_field('subtitle', $b_id);
+                $banner_content = get_field('banner_content', $b_id);
                 $media_type = get_field('media_type', $b_id);
                 $link_arr = get_field('link', $b_id);
+
+                if($banner_content){
+                    $title = $banner_content;
+                }
                 
                 // Media Logic
                 $slide_html = '';
@@ -69,7 +87,6 @@ $selected_banners = get_field('banner_select_page', $banner_source_id);
                     $poster = get_field('video_poster', $b_id);
                     if ($vid_url) {
                         $slide_html = '<video class="w-full object-cover" src="'.esc_url($vid_url).'" muted playsinline preload="metadata" ' . ($poster ? 'poster="'.esc_url($poster).'"' : '') . ' autoplay loop></video>'; 
-                        // Note: UI usually implies autoplay loop for background banners, added for robust UX.
                     }
                 } else {
                     // Default to Image
@@ -83,11 +100,11 @@ $selected_banners = get_field('banner_select_page', $banner_source_id);
                     }
                     
                     if ($img_url) {
-                         $slide_html = '<img class="lozad" data-src="'.esc_url($img_url).'" alt="'.esc_attr($title).'"/>';
+                            $slide_html = '<img class="lozad" data-src="'.esc_url($img_url).'" alt="'.esc_attr($title).'"/>';
                     }
                 }
             ?>
-            <div class="swiper-slide">
+            <div class="<?php echo ($banner_count > 1) ? 'swiper-slide' : 'relative w-full h-full'; ?>">
                 <!-- Ratio Container matches UI: xl:ratio:pt-[960_1920] etc -->
                 <div class="img img-ratio xl:ratio:pt-[960_1920] md:ratio:pt-[1_1] ratio:pt-[15_10]"> 
                     <?php echo $slide_html; ?>
@@ -98,30 +115,28 @@ $selected_banners = get_field('banner_select_page', $banner_source_id);
                 <div class="absolute left-20 -xl:left-10 -lg:left-5 z-10 bottom-[10%] text-white flex flex-col gap-5"> 
                     <?php if ($subtitle): ?>
                     <div class="body-4 font-bold"> 
-                        <p><?php echo esc_html($subtitle); ?></p>
+                        <p><?php echo wp_kses_post($subtitle); ?></p>
                     </div>
                     <?php endif; ?>
                     
                     <?php if ($title): ?>
                     <div class="heading-1">
-                        <h1><?php echo esc_html($title); ?></h1>
+                        <h1><?php echo wp_kses_post($title); ?></h1>
                     </div>
                     <?php endif; ?>
-
-                    <?php 
-                    // Optional Link (Button) if needed. UI implies clickable or just text.
-                    // If link exists, maybe wrap title or show button? 
-                    // For simply matching UI text overlay, we stop here.
-                    ?>
                 </div>
                 <?php endif; ?>
             </div>
             <?php endforeach; ?>
+
+    <?php if ($banner_count > 1): ?>
         </div>
         <!-- Pagination if > 1 slide -->
-        <?php if (count($selected_banners) > 1): ?>
         <div class="swiper-pagination"></div>
-        <?php endif; ?>
     </div>
+    <?php else: ?>
+    </div>
+    <?php endif; ?>
 </section>
+<?php endif; ?>
 <?php endif; ?>

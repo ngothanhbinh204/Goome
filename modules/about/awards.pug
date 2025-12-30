@@ -1,0 +1,45 @@
+section.section-about-6 
+	.section-px
+		.bg-about-6(class=" rounded-4 -sm:overflow-hidden" setBackground="./img/about-6.png")
+			.container(class="relative z-1")
+				.section-py 
+					.grid.grid-cols-2(class="-lg:grid-cols-1 gap-base")
+						.block-left
+							.section-detailPrd(class=" relative flex xl:gap-20 -lg:flex-col gap-base ")
+								.detailPrd-banner(class="flex w-full -lg:flex-col-reverse   -lg:gap-4")                               
+									.product-banner-pagination(class="w-[calc((153/593)*100%)] -lg:w-full -lg:pr-0 pr-8")
+										.flex-1(class="relative w-full h-full ")
+											.swiper.swiper-detail-product-thumb(thumbsSlider="" class="lg:absolute xl:left-0 xl:top-0 w-full h-full ")
+												.swiper-wrapper
+													-for(let i=0;i<7;i++)
+														.swiper-slide(class="  cursor-pointer select-none rounded-4")
+															.img(class="h-full img-ratio ratio:pt-[1_1] rounded-4") 
+																+PugImg()(class='hover:scale-115 transition-500')
+											.swiper-scrollbar
+									.product-banner-main(class="relative w-[calc((440/593)*100%)]  -lg:w-full")
+										.swiper.swiper-detail-product
+											.swiper-wrapper
+												-for(let i=0;i<7;i++)
+													.swiper-slide.overflow-hidden.rounded-4
+														a(href="./img/1.jpg" data-fancybox="gallery" class="h-full group img-ratio ratio:pt-[550_440] -lg:ratio:pt-[1_2]") 
+															+PugImg()(class='group-hover:scale-115 transition-500')
+
+						.block-right 
+							.swiper-column-auto.auto-1-column(data-swiper-prev=".button-swiper .btn-prev" data-swiper-next=".button-swiper .btn-next")
+								.swiper
+									.swiper-wrapper
+										-for(let i = 0; i  < 4 ; i++)
+											.swiper-slide
+												.block-big
+													.title-top 
+														.heading-1
+															h2 Chứng nhận - Giải thưởng
+													.sup-title 
+														.heading-2 
+															h3 Top 10 Công ty Kiến trúc hàng đầu 2025 tại Hubexo Asia Awards
+														.body-1(class="text-gray-800")
+															p Goome vinh dự được xướng tên trong "Top 10 Công ty Kiến trúc hàng đầu 2025" tại Hubexo Asia Awards – một trong những giải thưởng danh giá tại khu vực châu Á dành cho ngành kiến trúc - xây dựng.
+							.button-swiper
+								+btnPre()
+								+btnNext()
+

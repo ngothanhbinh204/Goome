@@ -51,4 +51,14 @@ function goome_get_archive_page_id($post_type) {
     }
     return 0;
 }
+
+/**
+ * Customize Rank Math Breadcrumbs
+ */
+add_filter( 'rank_math/frontend/breadcrumb/args', function( $args ) {
+	$args['delimiter'] = '<span class="separator"> | </span>';
+	$args['wrap_before'] = '<nav class="rank-math-breadcrumb" aria-label="breadcrumbs"><p>';
+	$args['wrap_after'] = '</p></nav>';
+	return $args;
+} );
 ?>

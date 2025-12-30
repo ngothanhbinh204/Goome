@@ -18,12 +18,12 @@ $args = [
 $project_query = new WP_Query($args);
 
 ?>
-<main>
+
     <?php 
     get_template_part('modules/projects/archive-content', null, [
         'archive_page_id' => $archive_page_id,
         'query'           => $project_query
     ]); 
     ?>
-</main>
+
 <?php get_footer(); ?>
